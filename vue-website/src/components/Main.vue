@@ -1,8 +1,34 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import emailjs from '@emailjs/browser'
+
 import linkedin from '../assets/linkedin.svg'
 import github from '../assets/github.svg'
 import placeholder from '../assets/placeholderpfp.png'
+import python from '../assets/python.svg'
+import cpp from '../assets/cpp.svg' 
+import java from '../assets/java.svg'
+import php from '../assets/php.svg'
+import sql from '../assets/sql.svg'
+import typescript from '../assets/typescript.svg'
+import javascript from '../assets/javascript.svg'
+import vue from '../assets/vue.svg'
+import react from '../assets/react.svg'
+import nodejs from '../assets/nodejs.svg'
+import springboot from '../assets/springboot.svg'
+import flask from '../assets/flask.svg'
+import tensorflow from '../assets/tensorflow.svg'
+import keras from '../assets/keras.svg'
+import git from '../assets/git.svg'
+import linux from '../assets/linux.svg'
+import docker from '../assets/docker.svg'
+import postman from '../assets/postman.svg'
+import s3 from '../assets/s3.svg'
+import lambda from '../assets/lambda.svg'
+import mongodb from '../assets/mongodb.svg'
+import mariadb from '../assets/mariadb.svg'
+import figma from '../assets/figma.svg'
+import wireshark from '../assets/wireshark.svg'
 
 const projects = [
   {
@@ -60,14 +86,47 @@ const projects = [
       "A web application for immunology data management and analysis. Features user authentication, data visualization, and reporting tools.",
     tools: [
       "Electron",
+      "Java",
       "Spring Boot",
       "AWS S3",
       "MongoDB",
       "React.js",
-      "TypeScript",
-      "Java"
+      "TypeScript"
     ]
   },
+]
+
+const languages = [
+  { name: "Python", icon: python },
+  { name: "C++", icon: cpp },
+  { name: "Java", icon: java },
+  { name: "PHP", icon: php },
+  { name: "SQL", icon: sql },
+  { name: "TypeScript", icon: typescript },
+  { name: "JavaScript", icon: javascript }
+]
+
+const frameworks = [
+  { name: "Vue", icon: vue },
+  { name: "React", icon: react },
+  { name: "Node.js", icon: nodejs },
+  { name: "Spring Boot", icon: springboot },
+  { name: "Flask", icon: flask },
+  { name: "TensorFlow", icon: tensorflow },
+  { name: "Keras", icon: keras }
+]
+
+const tools = [
+  { name: "Git", icon: git },
+  { name: "Linux", icon: linux },
+  { name: "Docker", icon: docker },
+  { name: "Postman", icon: postman },
+  { name: "S3", icon: s3 },
+  { name: "Lambda", icon: lambda },
+  { name: "MongoDB", icon: mongodb },
+  { name: "MariaDB", icon: mariadb },
+  { name: "Figma", icon: figma },
+  { name: "Wireshark", icon: wireshark }
 ]
 
 const isScrolled = ref(false)
@@ -83,6 +142,27 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
+
+const form = ref(null)
+const status = ref('')
+const statusColor = ref('text-gray-300')
+
+const SERVICE_ID = import.meta.env.VITE_EMAIL_SERVICE_ID
+const TEMPLATE_ID = import.meta.env.VITE_EMAIL_TEMPLATE_ID
+const PUBLIC_KEY = import.meta.env.VITE_EMAIL_PUBLIC_KEY
+
+const sendEmail = async () => {
+  try {
+    await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.value, PUBLIC_KEY)
+    status.value = 'Message sent successfully!'
+    statusColor.value = 'text-green-400'
+    form.value.reset()
+  } catch (error) {
+    console.error('EmailJS error:', error)
+    status.value = 'Failed to send message. Please try again.'
+    statusColor.value = 'text-red-400'
+  }
+}
 
 </script>
 
@@ -125,7 +205,7 @@ onUnmounted(() => {
         </div>
 
         <!-- Right -->
-        <div class="hover:lg hidden lg:flex lg:flex-1 lg:justify-end">
+        <div class="hover:lg hover:scale-105 transition-transform hidden lg:flex lg:flex-1 lg:justify-end">
           <a
             href="../../public/Resume.pdf"
             download="Loc_Dinh_Resume.pdf"
@@ -151,7 +231,7 @@ onUnmounted(() => {
       <div class="flex w-full flex-col lg:flex-row items-center gap-20 my-20">
         <!-- portrait -->
         <div class="w-64 sm:w-80 rounded-3xl max-w-none">
-          <img :src="placeholder" alt="Portrait" class="w-full rounded-3xl object-cover" />
+          <img :src="placeholder" alt="Photo of Loc Dinh" class="w-full rounded-3xl object-cover" />
         </div>
 
         <!-- bio -->
@@ -179,7 +259,7 @@ onUnmounted(() => {
             <li
               class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full 
               border border-white/10 bg-white/5 px-3 py-1 text-sm"
-            >
+>
               Java
             </li>
             <li
@@ -218,8 +298,8 @@ onUnmounted(() => {
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="px-[10%] py-20 bg-gray-900 text-white">
-      <h2 class="font-serif text-center text-5xl font-bold mb-16 ">Projects</h2>
+    <section id="projects" class="px-[10%] py-30 bg-gray-900 text-white">
+      <h2 class="font-serif text-center text-5xl font-bold mb-16">Projects</h2>
 
       <!-- Responsive 3-column grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -259,13 +339,99 @@ onUnmounted(() => {
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="min-h-screen flex items-center justify-center text-white">
-      <h2 class="text-4xl">Skills Section</h2>
+    <section id="skills" class="min-h-screen bg-gray-900 px-[10%] py-30 text-white">
+      <h2 class="font-serif text-5xl font-bold text-center mb-16">Skills</h2>
+
+      <!-- 3-column layout -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+        <!-- Card 1: Languages -->
+        <div class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300">
+          <h3 class="font-mono text-2xl font-bold mb-6 text-center">Languages</h3>
+          <div class="grid grid-cols-2 gap-4">
+              <div 
+                v-for="lang in languages" 
+                :key="lang.name" 
+                class="flex flex-col items-center text-center bg-white/5 p-4 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+            >
+              <img :src="lang.icon" :alt="lang.name" class="w-12 h-12 mb-2 group-hover:drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)] transition-all duration-300" />
+              <p class="text-sm font-semibold">{{ lang.name }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Frameworks -->
+        <div class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300">
+          <h3 class="font-mono text-2xl font-bold mb-6 text-center">Frameworks & Libraries</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div 
+              v-for="fw in frameworks" 
+              :key="fw.name" 
+              class="flex flex-col items-center text-center bg-white/5 p-4 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+            >
+              <img :src="fw.icon" :alt="fw.name" class="w-12 h-12 mb-2 group-hover:drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)] transition-all duration-300" />
+              <p class="text-sm font-semibold">{{ fw.name }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Tools -->
+        <div class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300">
+          <h3 class="font-mono text-2xl font-bold mb-6 text-center">Tools & Platforms</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div 
+              v-for="tool in tools" 
+              :key="tool.name" 
+              class="flex flex-col items-center text-center bg-white/5 p-4 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+            >
+              <img :src="tool.icon" :alt="tool.name" class="w-12 h-12 mb-2 group-hover:drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)] transition-all duration-300" />
+              <p class="text-sm font-semibold">{{ tool.name }}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section>
 
+
     <!-- Contact -->
-    <section id="contact" class="min-h-screen flex items-center justify-center text-white">
-      <h2 class="text-4xl">Contact Section</h2>
+    <section id="contact" class="min-h-screen bg-gray-900 text-white px-[10%] py-20">
+      <h2 class="font-serif text-5xl font-bold text-center mb-12">Contact Me</h2>
+
+      <form ref="form" @submit.prevent="sendEmail" class="max-w-lg mx-auto bg-gray-800/60 p-8 rounded-2xl shadow-lg border border-white/10">
+        <label class="font-mono block mb-2 font-semibold">Name</label>
+        <input
+          type="text"
+          name="user_name"
+          required
+          class="w-full mb-4 p-2 rounded-lg bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+
+        <label class="font-mono block mb-2 font-semibold">Email</label>
+        <input
+          type="email"
+          name="user_email"
+          required
+          class="w-full mb-4 p-2 rounded-lg bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+
+        <label class="font-mono block mb-2 font-semibold">Message</label>
+        <textarea
+          name="message"
+          rows="5"
+          required
+          class="w-full mb-4 p-2 rounded-lg bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        ></textarea>
+
+        <button
+          type="submit"
+          class="font-mono hover:scale-101 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition-transform duration-200 shadow-lg"
+        >
+          Send Message
+        </button>
+
+        <p v-if="status" class="mt-4 text-center text-sm" :class="statusColor">{{ status }}</p>
+      </form>
     </section>
   </div>
 </template>
