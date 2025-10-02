@@ -66,7 +66,7 @@ const projects = [
   },
   {
     title: "CaSMM: Teacher View & Lesson Creator",
-    link: "https://github.com/your-github-repo",
+    link: "https://github.com/Group-9h-Intro-Software-Engineering/Diamond-Project17-9h",
     description:
       "An educator focused dashboard built with Strapi and React. Enhanced UI/UX with Bootstrap hover effects and led Agile sprints as Scrum Master.",
     tools: [
