@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import emailjs from '@emailjs/browser'
-
+import home from '../assets/home.svg'
 import linkedin from '../assets/linkedin.svg'
 import github from '../assets/github.svg'
 import placeholder from '../assets/placeholderpfp.png'
@@ -19,6 +19,7 @@ import springboot from '../assets/springboot.svg'
 import flask from '../assets/flask.svg'
 import tensorflow from '../assets/tensorflow.svg'
 import keras from '../assets/keras.svg'
+import scikit from '../assets/sklearn.svg'
 import git from '../assets/git.svg'
 import linux from '../assets/linux.svg'
 import docker from '../assets/docker.svg'
@@ -113,7 +114,8 @@ const frameworks = [
   { name: "Spring Boot", icon: springboot },
   { name: "Flask", icon: flask },
   { name: "TensorFlow", icon: tensorflow },
-  { name: "Keras", icon: keras }
+  { name: "Keras", icon: keras },
+  { name: "Scikit-Learn", icon: scikit }
 ]
 
 const tools = [
@@ -143,7 +145,7 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
-const form = ref(null)
+const form = ref<HTMLFormElement | null>(null)
 const status = ref('')
 const statusColor = ref('text-gray-300')
 
@@ -152,14 +154,15 @@ const TEMPLATE_ID = import.meta.env.VITE_EMAIL_TEMPLATE_ID
 const PUBLIC_KEY = import.meta.env.VITE_EMAIL_PUBLIC_KEY
 
 const sendEmail = async () => {
+  if (!form.value) return
   try {
     await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.value, PUBLIC_KEY)
-    status.value = 'Message sent successfully!'
+    status.value = 'Email sent successfully!'
     statusColor.value = 'text-green-400'
     form.value.reset()
   } catch (error) {
     console.error('EmailJS error:', error)
-    status.value = 'Failed to send message. Please try again.'
+    status.value = 'Failed to email. Please try again.'
     statusColor.value = 'text-red-400'
   }
 }
@@ -185,7 +188,7 @@ const sendEmail = async () => {
         <div class="flex lg:flex-1">
           <a href="#" class="-m-1.5 p-1.5">
             <span class="sr-only">Your Company</span>
-            <img class="h-8 w-auto" src="" alt="Loc Dinh Logo" />
+            <img class="h-8 w-auto" :src=home alt="Loc Dinh Logo" />
           </a>
         </div>
 
@@ -205,7 +208,7 @@ const sendEmail = async () => {
         </div>
 
         <!-- Right -->
-        <div class="hover:lg hover:scale-105 transition-transform hidden lg:flex lg:flex-1 lg:justify-end">
+        <div class="hover:lg hover:scale-102 transition-transform hidden lg:flex lg:flex-1 lg:justify-end">
           <a
             href="../../public/Resume.pdf"
             download="Loc_Dinh_Resume.pdf"
@@ -301,7 +304,7 @@ const sendEmail = async () => {
     <section id="projects" class="px-[10%] py-30 bg-gray-900 text-white">
       <h2 class="font-serif text-center text-5xl font-bold mb-16">Projects</h2>
 
-      <!-- Responsive 3-column grid -->
+      <!-- 3-column grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         <div 
           v-for="project in projects" 
@@ -342,10 +345,10 @@ const sendEmail = async () => {
     <section id="skills" class="min-h-screen bg-gray-900 px-[10%] py-30 text-white">
       <h2 class="font-serif text-5xl font-bold text-center mb-16">Skills</h2>
 
-      <!-- 3-column layout -->
+      <!-- 3-column -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
 
-        <!-- Card 1: Languages -->
+        <!-- Languages -->
         <div class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300">
           <h3 class="font-mono text-2xl font-bold mb-6 text-center">Languages</h3>
           <div class="grid grid-cols-2 gap-4">
@@ -360,7 +363,7 @@ const sendEmail = async () => {
           </div>
         </div>
 
-        <!-- Card 2: Frameworks -->
+        <!-- Frameworks -->
         <div class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300">
           <h3 class="font-mono text-2xl font-bold mb-6 text-center">Frameworks & Libraries</h3>
           <div class="grid grid-cols-2 gap-4">
@@ -375,7 +378,7 @@ const sendEmail = async () => {
           </div>
         </div>
 
-        <!-- Card 3: Tools -->
+        <!-- Tools -->
         <div class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300">
           <h3 class="font-mono text-2xl font-bold mb-6 text-center">Tools & Platforms</h3>
           <div class="grid grid-cols-2 gap-4">
@@ -395,7 +398,7 @@ const sendEmail = async () => {
 
 
     <!-- Contact -->
-    <section id="contact" class="min-h-screen bg-gray-900 text-white px-[10%] py-20">
+    <section id="contact" class="min-h-screen bg-gray-900 text-white px-[10%] py-30">
       <h2 class="font-serif text-5xl font-bold text-center mb-12">Contact Me</h2>
 
       <form ref="form" @submit.prevent="sendEmail" class="max-w-lg mx-auto bg-gray-800/60 p-8 rounded-2xl shadow-lg border border-white/10">
@@ -432,6 +435,31 @@ const sendEmail = async () => {
 
         <p v-if="status" class="mt-4 text-center text-sm" :class="statusColor">{{ status }}</p>
       </form>
+
+      <!-- Social Links -->
+      <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-lg mx-auto">
+        <!-- LinkedIn Card -->
+        <a 
+          href="https://www.linkedin.com/in/loc-dinh-/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="flex flex-col items-center justify-center bg-gray-800/60 rounded-2xl p-6 border border-white/10 shadow-lg hover:shadow-[0_10px_25px_rgba(0,0,0,0.7)] hover:-translate-y-2 transition-all duration-300"
+        >
+          <img :src="linkedin" alt="LinkedIn" class="w-16 h-16 mb-3 transition-transform group-hover:scale-110" />
+          <p class="font-mono text-lg font-semibold">Connect on LinkedIn</p>
+        </a>
+
+        <!-- GitHub Card -->
+        <a 
+          href="https://github.com/LocBDinh" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="flex flex-col items-center justify-center bg-gray-800/60 rounded-2xl p-6 border border-white/10 shadow-lg hover:shadow-[0_10px_25px_rgba(0,0,0,0.7)] hover:-translate-y-2 transition-all duration-300"
+        >
+          <img :src="github" alt="GitHub" class="w-16 h-16 mb-3 transition-transform group-hover:scale-110" />
+          <p class="font-mono text-lg font-semibold">View My GitHub</p>
+        </a>
+      </div>
     </section>
   </div>
 </template>
