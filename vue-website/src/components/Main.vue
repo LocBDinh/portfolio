@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import emailjs from '@emailjs/browser'
 import home from '../assets/home.svg'
+import pfp from '../assets/locdinh.jpg'
 import linkedin from '../assets/linkedin.svg'
 import github from '../assets/github.svg'
 import placeholder from '../assets/placeholderpfp.png'
@@ -29,7 +30,7 @@ import lambda from '../assets/lambda.svg'
 import mongodb from '../assets/mongodb.svg'
 import mariadb from '../assets/mariadb.svg'
 import figma from '../assets/figma.svg'
-import wireshark from '../assets/wireshark.svg'
+import unity from '../assets/unity.svg'
 
 const projects = [
   {
@@ -128,7 +129,7 @@ const tools = [
   { name: "MongoDB", icon: mongodb },
   { name: "MariaDB", icon: mariadb },
   { name: "Figma", icon: figma },
-  { name: "Wireshark", icon: wireshark }
+  { name: "Unity", icon: unity }
 ]
 
 const isScrolled = ref(false)
@@ -233,8 +234,8 @@ const sendEmail = async () => {
       <!-- image -->
       <div class="flex w-full flex-col lg:flex-row items-center gap-20 my-20">
         <!-- portrait -->
-        <div class="w-64 sm:w-80 rounded-3xl max-w-none">
-          <img :src="placeholder" alt="Photo of Loc Dinh" class="w-full rounded-3xl object-cover" />
+        <div class="w-64 sm:w-80 rounded-3xl shadow-2xl max-w-none">
+          <img :src="pfp" alt="Photo of Loc Dinh" class="w-full rounded-3xl object-cover" />
         </div>
 
         <!-- bio -->
@@ -294,6 +295,12 @@ const sendEmail = async () => {
               border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               Linux
+            </li>
+            <li
+              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full 
+              border border-white/10 bg-white/5 px-3 py-1 text-sm"
+            >
+              Unity
             </li>
           </ul>
         </div>
