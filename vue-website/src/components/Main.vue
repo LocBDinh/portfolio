@@ -33,6 +33,21 @@ import figma from '../assets/figma.svg'
 import unity from '../assets/unity.svg'
 
 const projects = [
+    {
+    title: "IMMUNODOM",
+    link: "https://immunodom.com/about",
+    description:
+      "A web application for immunology data management and analysis. Features user authentication, data visualization, and reporting tools.",
+    tools: [
+      "Electron",
+      "Java",
+      "Spring Boot",
+      "AWS S3",
+      "MongoDB",
+      "React.js",
+      "TypeScript"
+    ]
+  },
   {
     title: "GreenGPT",
     link: "https://green-gpt-dusky.vercel.app/",
@@ -78,22 +93,6 @@ const projects = [
       "Agile",
       "Bootstrap",
       "Figma"
-    ]
-  }
-  ,
-  {
-    title: "IMMUNODOM",
-    link: "https://immunodom.com/about",
-    description:
-      "A web application for immunology data management and analysis. Features user authentication, data visualization, and reporting tools.",
-    tools: [
-      "Electron",
-      "Java",
-      "Spring Boot",
-      "AWS S3",
-      "MongoDB",
-      "React.js",
-      "TypeScript"
     ]
   },
 ]
@@ -211,7 +210,7 @@ const sendEmail = async () => {
         <!-- Right -->
         <div class="hover:lg hover:scale-102 transition-transform hidden lg:flex lg:flex-1 lg:justify-end">
           <a
-            href="../../public/Resume.pdf"
+            href="/portfolio/Resume.pdf"
             download="Loc_Dinh_Resume.pdf"
             class="inline-flex items-center rounded-xl bg-white/10 
             px-4 py-2 text-sm font-semibold text-white 
