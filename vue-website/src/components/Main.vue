@@ -155,6 +155,15 @@ const PUBLIC_KEY = import.meta.env.VITE_EMAIL_PUBLIC_KEY
 
 const sendEmail = async () => {
   if (!form.value) return
+  
+  const formData = new FormData(form.value)
+
+  // Anti-Bot Honeypot Check
+  if (formData.get('honeypot')) {
+    console.warn('Bot detected — form not submitted.')
+    return
+  }
+
   try {
     await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.value, PUBLIC_KEY)
     status.value = 'Email sent successfully!'
@@ -162,65 +171,93 @@ const sendEmail = async () => {
     form.value.reset()
   } catch (error) {
     console.error('EmailJS error:', error)
-    status.value = 'Failed to email. Please try again.'
+    status.value = 'Failed to send email. Please try again.'
     statusColor.value = 'text-red-400'
   }
 }
 
+const isMenuOpen = ref(false)
 </script>
 
 <template>
   <div class="bg-gray-900 min-h-screen">
     <!-- Navbar -->
     <header
-      :class="[
-        'z-50 transition-all duration-300',
+      :class="[ 
+        'z-50 transition-all duration-300', 
         isScrolled
           ? 'fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl bg-gray-900/95 backdrop-blur border border-white/10 rounded-2xl shadow-lg'
-          : 'absolute top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl bg-gray-900/60 backdrop-blur rounded-2xl shadow-xl border border-white/10',
+          : 'absolute top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl bg-gray-900/60 backdrop-blur rounded-2xl shadow-xl border border-white/10'
       ]"
     >
-      <nav
-        class="flex font-mono items-center justify-between px-6 py-3 lg:px-8"
-        aria-label="Global"
-      >
+      <nav class="flex font-mono items-center justify-between px-6 py-3 lg:px-8" aria-label="Global">
+
         <!-- Logo -->
-        <div class="flex lg:flex-1">
-          <a href="#" class="-m-1.5 p-1.5">
-            <span class="sr-only">Your Company</span>
-            <img class="h-8 w-auto" :src=home alt="Loc Dinh Logo" />
+        <div class="flex lg:flex-1 items-center">
+          <a href="#" class="-m-1.5 p-1.5 flex items-center gap-2">
+            <img class="h-8 w-auto" :src="home" alt="Loc Dinh Logo" />
           </a>
         </div>
 
-        <!-- Links -->
+        <!-- Desktop Links -->
         <div class="hidden lg:flex lg:gap-x-12">
-          <a href="#about" class="hover:text-gray-500 text-sm font-semibold text-white">
-            About
-          </a>
-          <a href="#projects" class="hover:text-gray-500 text-sm font-semibold text-white">
-            Projects
-            </a>
-          <a href="#skills" class="hover:text-gray-500 text-sm font-semibold text-white">
-            Skills
-          </a>
-          <a href="#contact" class="hover:text-gray-500 text-sm font-semibold text-white">
-            Contact</a>
+          <a href="#about" class="hover:text-gray-500 text-sm font-semibold text-white">About</a>
+          <a href="#projects" class="hover:text-gray-500 text-sm font-semibold text-white">Projects</a>
+          <a href="#skills" class="hover:text-gray-500 text-sm font-semibold text-white">Skills</a>
+          <a href="#contact" class="hover:text-gray-500 text-sm font-semibold text-white">Contact</a>
         </div>
 
-        <!-- Right -->
+        <!-- Resume Button -->
         <div class="hover:lg hover:scale-102 transition-transform hidden lg:flex lg:flex-1 lg:justify-end">
           <a
             href="/portfolio/Resume.pdf"
             download="Loc_Dinh_Resume.pdf"
             class="inline-flex items-center rounded-xl bg-white/10 
             px-4 py-2 text-sm font-semibold text-white 
-            hover:bg-stone-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            hover:bg-stone-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" hov
           >
             Download Resume
           </a>
         </div>
+
+        <!-- Mobile Navbar Open -->
+        <div class="lg:hidden flex items-center">
+          <button 
+            @click="isMenuOpen = !isMenuOpen" 
+            class="text-white focus:outline-none hover:scale-120 transition-transform"
+            aria-label="Toggle Menu"
+          >
+            <svg v-if="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
       </nav>
+
+      <!-- Mobile Dropdown Menu -->
+      <div 
+        v-show="isMenuOpen" 
+        class="lg:hidden bg-gray-800 border-t border-white/10 px-6 py-4 space-y-4 text-center rounded-b-2xl transition-all duration-300 font-mono"
+      >
+        <a href="#about" @click="isMenuOpen = false" class="block text-white hover:text-gray-500 font-semibold">About</a>
+        <a href="#projects" @click="isMenuOpen = false" class="block text-white hover:text-gray-500 font-semibold">Projects</a>
+        <a href="#skills" @click="isMenuOpen = false" class="block text-white hover:text-gray-500 font-semibold">Skills</a>
+        <a href="#contact" @click="isMenuOpen = false" class="block text-white hover:text-gray-500 font-semibold">Contact</a>
+        <a 
+          href="/portfolio/Resume.pdf"
+          download="Loc_Dinh_Resume.pdf"
+          @click="isMenuOpen = false"
+          class="mt-2 inline-block bg-white/20 hover:bg-stone-600 hover:scale-102 text-white font-semibold px-4 py-2 rounded-lg transition-transform"
+        >
+          Download Resume
+        </a>
+      </div>
     </header>
+
 
     <!-- About -->
     <section id="about" class="w-full px-[12%] py-30 scroll-mt-32 text-white">
@@ -408,6 +445,15 @@ const sendEmail = async () => {
       <h2 class="font-serif text-5xl font-bold text-center mb-12">Contact Me</h2>
 
       <form ref="form" @submit.prevent="sendEmail" class="max-w-lg mx-auto bg-gray-800/60 p-8 rounded-2xl shadow-lg border border-white/10">
+        <!-- Honeypot -->
+        <input 
+          type="text" 
+          name="honeypot" 
+          style="display: none;" 
+          tabindex="-1" 
+          autocomplete="off"
+        />
+
         <label class="font-mono block mb-2 font-semibold">Name</label>
         <input
           type="text"
@@ -467,6 +513,25 @@ const sendEmail = async () => {
         </a>
       </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-white/10 py-6 mt-20">
+      <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-gray-400 text-sm">
+        <!-- Copyright -->
+        <p class="text-center md:text-left">
+          © {{ new Date().getFullYear() }} Loc Dinh. All Rights Reserved.
+        </p>
+
+        <!-- Quick Links -->
+        <div class="text-white flex gap-6 mt-4 md:mt-0">
+          <a href="#about" class="hover:text-indigo-400 transition">About</a>
+          <a href="#projects" class="hover:text-indigo-400 transition">Projects</a>
+          <a href="#skills" class="hover:text-indigo-400 transition">Skills</a>
+          <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
+        </div>
+      </div>
+    </footer>
+
   </div>
 </template>
 
