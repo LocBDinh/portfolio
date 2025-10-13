@@ -7,7 +7,7 @@ import linkedin from '../assets/linkedin.svg'
 import github from '../assets/github.svg'
 import placeholder from '../assets/placeholderpfp.png'
 import python from '../assets/python.svg'
-import cpp from '../assets/cpp.svg' 
+import cpp from '../assets/cpp.svg'
 import java from '../assets/java.svg'
 import php from '../assets/php.svg'
 import sql from '../assets/sql.svg'
@@ -33,102 +33,78 @@ import figma from '../assets/figma.svg'
 import unity from '../assets/unity.svg'
 
 const projects = [
-    {
-    title: "IMMUNODOM",
-    link: "https://immunodom.com/about",
+  {
+    title: 'IMMUNODOM',
+    link: 'https://immunodom.com/about',
     description:
-      "A web application for immunology data management and analysis. Features user authentication, data visualization, and reporting tools.",
-    tools: [
-      "Electron",
-      "Java",
-      "Spring Boot",
-      "AWS S3",
-      "MongoDB",
-      "React.js",
-      "TypeScript"
-    ]
+      'A web application for immunology data management and analysis. Features user authentication, data visualization, and reporting tools.',
+    tools: ['Electron', 'Java', 'Spring Boot', 'AWS S3', 'MongoDB', 'React.js', 'TypeScript'],
   },
   {
-    title: "GreenGPT",
-    link: "https://green-gpt-dusky.vercel.app/",
+    title: 'GreenGPT',
+    link: 'https://green-gpt-dusky.vercel.app/',
     description:
-      "A chrome extension and sustainability tracking web app with a gamified leaderboard and energy usage visualization. Tracks ChatGPT prompt usage and converts it into estimated energy consumption tokens.",
-    tools: [
-      "React.js",
-      "Next.js",
-      "PHP",
-      "Vercel",
-      "Node.js",
-      "CSS",
-      "MySQL"
-    ]
+      'A chrome extension and sustainability tracking web app with a gamified leaderboard and energy usage visualization. Tracks ChatGPT prompt usage and converts it into estimated energy consumption tokens.',
+    tools: ['React.js', 'Next.js', 'PHP', 'Vercel', 'Node.js', 'CSS', 'MySQL'],
   },
   {
-    title: "NeuroStock Forecast",
-    link: "https://github.com/LocBDinh/NeuroStock-Forecast",
+    title: 'NeuroStock Forecast',
+    link: 'https://github.com/LocBDinh/NeuroStock-Forecast',
     description:
-      "A real-time stock prediction model using LSTM and TensorFlow with a Flask backend. Integrated YahooFinance for live data and trained models with Keras.",
+      'A real-time stock prediction model using LSTM and TensorFlow with a Flask backend. Integrated YahooFinance for live data and trained models with Keras.',
     tools: [
-      "Python",
-      "Flask",
-      "TensorFlow",
-      "Keras",
-      "Scikit-Learn",
-      "Postman",
-      "YFinance",
-      "HTML",
-      "CSS"
-    ]
+      'Python',
+      'Flask',
+      'TensorFlow',
+      'Keras',
+      'Scikit-Learn',
+      'Postman',
+      'YFinance',
+      'HTML',
+      'CSS',
+    ],
   },
   {
-    title: "CaSMM: Teacher View & Lesson Creator",
-    link: "https://github.com/Group-9h-Intro-Software-Engineering/Diamond-Project17-9h",
+    title: 'CaSMM: Teacher View & Lesson Creator',
+    link: 'https://github.com/Group-9h-Intro-Software-Engineering/Diamond-Project17-9h',
     description:
-      "An educator focused dashboard built with Strapi and React. Enhanced UI/UX with Bootstrap hover effects and led Agile sprints as Scrum Master.",
-    tools: [
-      "Strapi",
-      "Docker",
-      "React.js",
-      "Node.js",
-      "Agile",
-      "Bootstrap",
-      "Figma"
-    ]
+      'An educator focused dashboard built with Strapi and React. Enhanced UI/UX with Bootstrap hover effects and led Agile sprints as Scrum Master.',
+    tools: ['Strapi', 'Docker', 'React.js', 'Node.js', 'Agile', 'Bootstrap', 'Figma'],
   },
 ]
 
 const languages = [
-  { name: "Python", icon: python },
-  { name: "C++", icon: cpp },
-  { name: "Java", icon: java },
-  { name: "PHP", icon: php },
-  { name: "SQL", icon: sql },
-  { name: "TypeScript", icon: typescript },
-  { name: "JavaScript", icon: javascript }
+  { name: 'Python', icon: python },
+  { name: 'C++', icon: cpp },
+  { name: 'Java', icon: java },
+  { name: 'PHP', icon: php },
+  { name: 'SQL', icon: sql },
+  { name: 'TypeScript', icon: typescript },
+  { name: 'JavaScript', icon: javascript },
 ]
 
 const frameworks = [
-  { name: "Vue", icon: vue },
-  { name: "React", icon: react },
-  { name: "Node.js", icon: nodejs },
-  { name: "Spring Boot", icon: springboot },
-  { name: "Flask", icon: flask },
-  { name: "TensorFlow", icon: tensorflow },
-  { name: "Keras", icon: keras },
-  { name: "Scikit-Learn", icon: scikit }
+  { name: 'Vue', icon: vue },
+  { name: 'React', icon: react },
+  { name: 'Node.js', icon: nodejs },
+  { name: 'Spring Boot', icon: springboot },
+  { name: 'Flask', icon: flask },
+  { name: 'TensorFlow', icon: tensorflow },
+  { name: 'Keras', icon: keras },
+  { name: 'Scikit-Learn', icon: scikit },
 ]
 
 const tools = [
-  { name: "Git", icon: git },
-  { name: "Linux", icon: linux },
-  { name: "Docker", icon: docker },
-  { name: "Postman", icon: postman },
-  { name: "S3", icon: s3 },
-  { name: "Lambda", icon: lambda },
-  { name: "MongoDB", icon: mongodb },
-  { name: "MariaDB", icon: mariadb },
-  { name: "Figma", icon: figma },
-  { name: "Unity", icon: unity }
+  { name: 'Git', icon: git },
+  { name: 'Linux', icon: linux },
+  { name: 'Docker', icon: docker },
+  { name: 'Postman', icon: postman },
+  { name: 'S3', icon: s3 },
+  { name: 'Lambda', icon: lambda },
+  { name: 'MongoDB', icon: mongodb },
+  { name: 'MariaDB', icon: mariadb },
+  { name: 'Figma', icon: figma },
+  { name: 'Unity', icon: unity },
 ]
 
 const isScrolled = ref(false)
@@ -155,7 +131,7 @@ const PUBLIC_KEY = import.meta.env.VITE_EMAIL_PUBLIC_KEY
 
 const sendEmail = async () => {
   if (!form.value) return
-  
+
   const formData = new FormData(form.value)
 
   // Anti-Bot Honeypot Check
@@ -183,15 +159,17 @@ const isMenuOpen = ref(false)
   <div class="bg-gray-900 min-h-screen">
     <!-- Navbar -->
     <header
-      :class="[ 
-        'z-50 transition-all duration-300', 
+      :class="[
+        'z-50 transition-all duration-300',
         isScrolled
           ? 'fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl bg-gray-900/95 backdrop-blur border border-white/10 rounded-2xl shadow-lg'
-          : 'absolute top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl bg-gray-900/60 backdrop-blur rounded-2xl shadow-xl border border-white/10'
+          : 'absolute top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl bg-gray-900/60 backdrop-blur rounded-2xl shadow-xl border border-white/10',
       ]"
     >
-      <nav class="flex font-mono items-center justify-between px-6 py-3 lg:px-8" aria-label="Global">
-
+      <nav
+        class="flex font-mono items-center justify-between px-6 py-3 lg:px-8"
+        aria-label="Global"
+      >
         <!-- Logo -->
         <div class="flex lg:flex-1 items-center">
           <a href="#" class="-m-1.5 p-1.5 flex items-center gap-2">
@@ -199,22 +177,27 @@ const isMenuOpen = ref(false)
           </a>
         </div>
 
-        <!-- Desktop Links -->
+        <!-- Links -->
         <div class="hidden lg:flex lg:gap-x-12">
           <a href="#about" class="hover:text-gray-500 text-sm font-semibold text-white">About</a>
-          <a href="#projects" class="hover:text-gray-500 text-sm font-semibold text-white">Projects</a>
+          <a href="#projects" class="hover:text-gray-500 text-sm font-semibold text-white"
+            >Projects</a
+          >
           <a href="#skills" class="hover:text-gray-500 text-sm font-semibold text-white">Skills</a>
-          <a href="#contact" class="hover:text-gray-500 text-sm font-semibold text-white">Contact</a>
+          <a href="#contact" class="hover:text-gray-500 text-sm font-semibold text-white"
+            >Contact</a
+          >
         </div>
 
         <!-- Resume Button -->
-        <div class="hover:lg hover:scale-102 transition-transform hidden lg:flex lg:flex-1 lg:justify-end">
+        <div
+          class="hover:lg hover:scale-102 transition-transform hidden lg:flex lg:flex-1 lg:justify-end"
+        >
           <a
             href="/portfolio/Resume.pdf"
             download="Loc_Dinh_Resume.pdf"
-            class="inline-flex items-center rounded-xl bg-white/10 
-            px-4 py-2 text-sm font-semibold text-white 
-            hover:bg-stone-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" hov
+            class="inline-flex items-center rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-stone-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            hov
           >
             Download Resume
           </a>
@@ -222,32 +205,75 @@ const isMenuOpen = ref(false)
 
         <!-- Mobile Navbar Open -->
         <div class="lg:hidden flex items-center">
-          <button 
-            @click="isMenuOpen = !isMenuOpen" 
+          <button
+            @click="isMenuOpen = !isMenuOpen"
             class="text-white focus:outline-none hover:scale-120 transition-transform"
             aria-label="Toggle Menu"
           >
-            <svg v-if="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <svg
+              v-if="!isMenuOpen"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
-            <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>
-
       </nav>
 
       <!-- Mobile Dropdown Menu -->
-      <div 
-        v-show="isMenuOpen" 
+      <div
+        v-show="isMenuOpen"
         class="lg:hidden bg-gray-800 border-t border-white/10 px-6 py-4 space-y-4 text-center rounded-b-2xl transition-all duration-300 font-mono"
       >
-        <a href="#about" @click="isMenuOpen = false" class="block text-white hover:text-gray-500 font-semibold">About</a>
-        <a href="#projects" @click="isMenuOpen = false" class="block text-white hover:text-gray-500 font-semibold">Projects</a>
-        <a href="#skills" @click="isMenuOpen = false" class="block text-white hover:text-gray-500 font-semibold">Skills</a>
-        <a href="#contact" @click="isMenuOpen = false" class="block text-white hover:text-gray-500 font-semibold">Contact</a>
-        <a 
+        <a
+          href="#about"
+          @click="isMenuOpen = false"
+          class="block text-white hover:text-gray-500 font-semibold"
+          >About</a
+        >
+        <a
+          href="#projects"
+          @click="isMenuOpen = false"
+          class="block text-white hover:text-gray-500 font-semibold"
+          >Projects</a
+        >
+        <a
+          href="#skills"
+          @click="isMenuOpen = false"
+          class="block text-white hover:text-gray-500 font-semibold"
+          >Skills</a
+        >
+        <a
+          href="#contact"
+          @click="isMenuOpen = false"
+          class="block text-white hover:text-gray-500 font-semibold"
+          >Contact</a
+        >
+        <a
           href="/portfolio/Resume.pdf"
           download="Loc_Dinh_Resume.pdf"
           @click="isMenuOpen = false"
@@ -255,9 +281,21 @@ const isMenuOpen = ref(false)
         >
           Download Resume
         </a>
+        <!-- Mobile Socials -->
+        <div class="flex justify-center gap-6 mt-4">
+          <a
+            href="https://www.linkedin.com/in/loc-dinh-/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img :src="linkedin" alt="LinkedIn" class="w-7 h-7 opacity-80 hover:opacity-100" />
+          </a>
+          <a href="https://github.com/locbdinh" target="_blank" rel="noopener noreferrer">
+            <img :src="github" alt="GitHub" class="w-7 h-7 opacity-80 hover:opacity-100" />
+          </a>
+        </div>
       </div>
     </header>
-
 
     <!-- About -->
     <section id="about" class="w-full px-[12%] py-30 scroll-mt-32 text-white">
@@ -285,56 +323,47 @@ const isMenuOpen = ref(false)
           <!-- main tools -->
           <ul class="font-mono font-semibold flex flex-wrap gap-3 pt-4">
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full 
-              border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               Python
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full 
-              border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               C++
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full 
-              border border-white/10 bg-white/5 px-3 py-1 text-sm"
->
+              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
+            >
               Java
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full 
-              border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               Spring Boot
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full 
-              border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               Vue
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full 
-              border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               TypeScript
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full 
-              border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               AWS
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full 
-              border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               Linux
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full 
-              border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               Unity
             </li>
@@ -349,8 +378,8 @@ const isMenuOpen = ref(false)
 
       <!-- 3-column grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <div 
-          v-for="project in projects" 
+        <div
+          v-for="project in projects"
           :key="project.title"
           class="bg-gray-800/60 border border-white/10 rounded-2xl p-6 flex flex-col shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
         >
@@ -362,8 +391,8 @@ const isMenuOpen = ref(false)
 
           <!-- Tools / Tech badges -->
           <div class="flex flex-wrap gap-2 mb-6">
-            <span 
-              v-for="tool in project.tools" 
+            <span
+              v-for="tool in project.tools"
               :key="tool"
               class="px-3 py-1 rounded-full bg-white/10 text-xs font-medium text-gray-200 hover:bg-white/20 transition"
             >
@@ -372,9 +401,9 @@ const isMenuOpen = ref(false)
           </div>
 
           <!-- Button -->
-          <a 
-            :href="project.link" 
-            target="_blank" 
+          <a
+            :href="project.link"
+            target="_blank"
             rel="noopener noreferrer"
             class="mt-auto inline-block text-sm font-semibold text-indigo-400 hover:text-indigo-300 hover:underline transition"
           >
@@ -390,69 +419,82 @@ const isMenuOpen = ref(false)
 
       <!-- 3-column -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-
         <!-- Languages -->
-        <div class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300">
+        <div
+          class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300"
+        >
           <h3 class="font-mono text-2xl font-bold mb-6 text-center">Languages</h3>
           <div class="grid grid-cols-2 gap-4">
-              <div 
-                v-for="lang in languages" 
-                :key="lang.name" 
-                class="flex flex-col items-center text-center bg-white/5 p-4 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+            <div
+              v-for="lang in languages"
+              :key="lang.name"
+              class="flex flex-col items-center text-center bg-white/5 p-4 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
             >
-              <img :src="lang.icon" :alt="lang.name" class="w-12 h-12 mb-2 group-hover:drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)] transition-all duration-300" />
+              <img
+                :src="lang.icon"
+                :alt="lang.name"
+                class="w-12 h-12 mb-2 group-hover:drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)] transition-all duration-300"
+              />
               <p class="text-sm font-semibold">{{ lang.name }}</p>
             </div>
           </div>
         </div>
 
         <!-- Frameworks -->
-        <div class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300">
+        <div
+          class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300"
+        >
           <h3 class="font-mono text-2xl font-bold mb-6 text-center">Frameworks & Libraries</h3>
           <div class="grid grid-cols-2 gap-4">
-            <div 
-              v-for="fw in frameworks" 
-              :key="fw.name" 
+            <div
+              v-for="fw in frameworks"
+              :key="fw.name"
               class="flex flex-col items-center text-center bg-white/5 p-4 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
             >
-              <img :src="fw.icon" :alt="fw.name" class="w-12 h-12 mb-2 group-hover:drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)] transition-all duration-300" />
+              <img
+                :src="fw.icon"
+                :alt="fw.name"
+                class="w-12 h-12 mb-2 group-hover:drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)] transition-all duration-300"
+              />
               <p class="text-sm font-semibold">{{ fw.name }}</p>
             </div>
           </div>
         </div>
 
         <!-- Tools -->
-        <div class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300">
+        <div
+          class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300"
+        >
           <h3 class="font-mono text-2xl font-bold mb-6 text-center">Tools & Platforms</h3>
           <div class="grid grid-cols-2 gap-4">
-            <div 
-              v-for="tool in tools" 
-              :key="tool.name" 
+            <div
+              v-for="tool in tools"
+              :key="tool.name"
               class="flex flex-col items-center text-center bg-white/5 p-4 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
             >
-              <img :src="tool.icon" :alt="tool.name" class="w-12 h-12 mb-2 group-hover:drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)] transition-all duration-300" />
+              <img
+                :src="tool.icon"
+                :alt="tool.name"
+                class="w-12 h-12 mb-2 group-hover:drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)] transition-all duration-300"
+              />
               <p class="text-sm font-semibold">{{ tool.name }}</p>
             </div>
           </div>
         </div>
-
       </div>
     </section>
-
 
     <!-- Contact -->
     <section id="contact" class="min-h-screen bg-gray-900 text-white px-[10%] py-30">
       <h2 class="font-serif text-5xl font-bold text-center mb-12">Contact Me</h2>
 
-      <form ref="form" @submit.prevent="sendEmail" class="max-w-lg mx-auto bg-gray-800/60 p-8 rounded-2xl shadow-lg border border-white/10">
+      <form
+        ref="form"
+        @submit.prevent="sendEmail"
+        class="max-w-lg mx-auto bg-gray-800/60 p-8 rounded-2xl shadow-lg border border-white/10"
+      >
         <!-- Honeypot -->
-        <input 
-          type="text" 
-          name="honeypot" 
-          style="display: none;" 
-          tabindex="-1" 
-          autocomplete="off"
-        />
+        <input type="text" name="honeypot" style="display: none" tabindex="-1" autocomplete="off" />
 
         <label class="font-mono block mb-2 font-semibold">Name</label>
         <input
@@ -491,47 +533,82 @@ const isMenuOpen = ref(false)
       <!-- Social Links -->
       <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-lg mx-auto">
         <!-- LinkedIn Card -->
-        <a 
-          href="https://www.linkedin.com/in/loc-dinh-/" 
-          target="_blank" 
+        <a
+          href="https://www.linkedin.com/in/loc-dinh-/"
+          target="_blank"
           rel="noopener noreferrer"
           class="flex flex-col items-center justify-center bg-gray-800/60 rounded-2xl p-6 border border-white/10 shadow-lg hover:shadow-[0_10px_25px_rgba(0,0,0,0.7)] hover:-translate-y-2 transition-all duration-300"
         >
-          <img :src="linkedin" alt="LinkedIn" class="w-16 h-16 mb-3 transition-transform group-hover:scale-110" />
+          <img
+            :src="linkedin"
+            alt="LinkedIn"
+            class="w-16 h-16 mb-3 transition-transform group-hover:scale-110"
+          />
           <p class="font-mono text-lg font-semibold">Connect on LinkedIn</p>
         </a>
 
         <!-- GitHub Card -->
-        <a 
-          href="https://github.com/LocBDinh" 
-          target="_blank" 
+        <a
+          href="https://github.com/LocBDinh"
+          target="_blank"
           rel="noopener noreferrer"
           class="flex flex-col items-center justify-center bg-gray-800/60 rounded-2xl p-6 border border-white/10 shadow-lg hover:shadow-[0_10px_25px_rgba(0,0,0,0.7)] hover:-translate-y-2 transition-all duration-300"
         >
-          <img :src="github" alt="GitHub" class="w-16 h-16 mb-3 transition-transform group-hover:scale-110" />
+          <img
+            :src="github"
+            alt="GitHub"
+            class="w-16 h-16 mb-3 transition-transform group-hover:scale-110"
+          />
           <p class="font-mono text-lg font-semibold">View My GitHub</p>
         </a>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 border-t border-white/10 py-6 mt-20">
-      <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-gray-400 text-sm">
+    <footer class="bg-gray-800 border-t border-white/10 py-6">
+      <div
+        class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-gray-400 text-sm"
+      >
         <!-- Copyright -->
         <p class="text-center md:text-left">
-          © {{ new Date().getFullYear() }} Loc Dinh. All Rights Reserved.
+          © 2025 - {{ new Date().getFullYear() }} Loc Dinh. All Rights Reserved.
         </p>
 
-        <!-- Quick Links -->
-        <div class="text-white flex gap-6 mt-4 md:mt-0">
-          <a href="#about" class="hover:text-indigo-400 transition">About</a>
-          <a href="#projects" class="hover:text-indigo-400 transition">Projects</a>
-          <a href="#skills" class="hover:text-indigo-400 transition">Skills</a>
-          <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
+        <!-- Quick Links + Socials -->
+        <div class="flex flex-col md:flex-row items-center gap-6 mt-4 md:mt-0 text-white">
+          <!-- Quick Links -->
+          <div class="flex gap-6">
+            <a href="#about" class="hover:text-indigo-400 transition">About</a>
+            <a href="#projects" class="hover:text-indigo-400 transition">Projects</a>
+            <a href="#skills" class="hover:text-indigo-400 transition">Skills</a>
+            <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
+          </div>
+
+          <!-- Social Links (mini-cards) -->
+          <div class="flex gap-4 mt-3 md:mt-0">
+            <!-- LinkedIn -->
+            <a
+              href="https://www.linkedin.com/in/loc-dinh-/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center w-9 h-9 bg-gray-700/50 rounded-xl border border-white/10 hover:-translate-y-1 hover:shadow-[0_0_10px_rgba(99,102,241,0.6)] transition-all duration-300"
+            >
+              <img :src="linkedin" alt="LinkedIn" class="w-5 h-5" />
+            </a>
+
+            <!-- GitHub -->
+            <a
+              href="https://github.com/locbdinh"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center w-9 h-9 bg-gray-700/50 rounded-xl border border-white/10 hover:-translate-y-1 hover:shadow-[0_0_10px_rgba(99,102,241,0.6)] transition-all duration-300"
+            >
+              <img :src="github" alt="GitHub" class="w-5 h-5" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
-
   </div>
 </template>
 
