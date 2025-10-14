@@ -153,17 +153,44 @@ const sendEmail = async () => {
 }
 
 const isMenuOpen = ref(false)
+
+const isDark = ref(true)
+
+const toggleTheme = () => {
+  isDark.value = !isDark.value
+  const html = document.documentElement
+  if (isDark.value) {
+    html.classList.add('dark')
+    localStorage.setItem('theme', 'dark')
+  } else {
+    html.classList.remove('dark')
+    localStorage.setItem('theme', 'light')
+  }
+}
+
+onMounted(() => {
+  const saved = localStorage.getItem('theme')
+  if (saved === 'light') {
+    isDark.value = false
+    document.documentElement.classList.remove('dark')
+  } else {
+    isDark.value = true
+    document.documentElement.classList.add('dark')
+  }
+})
 </script>
 
 <template>
-  <div class="bg-gray-900 min-h-screen">
+  <div
+    class="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300"
+  >
     <!-- Navbar -->
     <header
       :class="[
         'z-50 transition-all duration-300',
         isScrolled
-          ? 'fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl bg-gray-900/95 backdrop-blur border border-white/10 rounded-2xl shadow-lg'
-          : 'absolute top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl bg-gray-900/60 backdrop-blur rounded-2xl shadow-xl border border-white/10',
+          ? 'fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl bg-white/90 dark:bg-gray-900/95 backdrop-blur border border-gray-200 dark:border-white/10 rounded-2xl shadow-lg'
+          : 'absolute top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl bg-white/70 dark:bg-gray-900/60 backdrop-blur rounded-2xl shadow-xl border border-gray-200 dark:border-white/10',
       ]"
     >
       <nav
@@ -173,18 +200,34 @@ const isMenuOpen = ref(false)
         <!-- Logo -->
         <div class="flex lg:flex-1 items-center">
           <a href="#" class="-m-1.5 p-1.5 flex items-center gap-2">
-            <img class="h-8 w-auto" :src="home" alt="Loc Dinh Logo" />
+            <img
+              class="h-8 w-auto drop-shadow-[0_0_2px_rgba(0,0,0,1)] dark:drop-shadow-none transition"
+              :src="home"
+              alt="Loc Dinh Logo"
+            />
           </a>
         </div>
 
         <!-- Links -->
         <div class="hidden lg:flex lg:gap-x-12">
-          <a href="#about" class="hover:text-gray-500 text-sm font-semibold text-white">About</a>
-          <a href="#projects" class="hover:text-gray-500 text-sm font-semibold text-white"
+          <a
+            href="#about"
+            class="hover:text-slate-300 text-sm font-semibold dark:text-white dark:hover:text-slate-600"
+            >About</a
+          >
+          <a
+            href="#projects"
+            class="hover:text-slate-300 text-sm font-semibold dark:text-white dark:hover:text-slate-600"
             >Projects</a
           >
-          <a href="#skills" class="hover:text-gray-500 text-sm font-semibold text-white">Skills</a>
-          <a href="#contact" class="hover:text-gray-500 text-sm font-semibold text-white"
+          <a
+            href="#skills"
+            class="hover:text-slate-300 text-sm font-semibold dark:text-white dark:hover:text-slate-600"
+            >Skills</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-slate-300 text-sm font-semibold dark:text-white dark:hover:text-slate-600"
             >Contact</a
           >
         </div>
@@ -196,18 +239,58 @@ const isMenuOpen = ref(false)
           <a
             href="/portfolio/Resume.pdf"
             download="Loc_Dinh_Resume.pdf"
-            class="inline-flex items-center rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-stone-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            class="inline-flex items-center rounded-xl bg-slate-500 dark:bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-stone-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             hov
           >
             Download Resume
           </a>
         </div>
 
+        <!-- Theme Toggle -->
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:ml-4">
+          <button
+            @click="toggleTheme"
+            class="p-2 rounded-lg bg-slate-300 dark:bg-white/10 hover:bg-gray-400 dark:hover:bg-white/20 transition flex items-center justify-center hover:scale-105"
+            aria-label="Toggle Dark/Light Mode"
+          >
+            <svg
+              v-if="isDark"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-yellow-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M12 3v1m0 16v1m8.66-8.66h1M3.34 12H2m15.36 6.36l.7.7M6.34 6.34l-.7-.7m0 12.72l.7-.7m12.72-12.72l-.7.7M12 5a7 7 0 000 14a7 7 0 000-14z"
+              />
+            </svg>
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-indigo-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M21 12.79A9 9 0 1111.21 3A7 7 0 0021 12.79z"
+              />
+            </svg>
+          </button>
+        </div>
+
         <!-- Mobile Navbar Open -->
         <div class="lg:hidden flex items-center">
           <button
             @click="isMenuOpen = !isMenuOpen"
-            class="text-white focus:outline-none hover:scale-120 transition-transform"
+            class="h-8 w-auto drop-shadow-[0_0_2px_rgba(0,0,0,0.5)] dark:drop-shadow-none"
             aria-label="Toggle Menu"
           >
             <svg
@@ -247,37 +330,37 @@ const isMenuOpen = ref(false)
       <!-- Mobile Dropdown Menu -->
       <div
         v-show="isMenuOpen"
-        class="lg:hidden bg-gray-800 border-t border-white/10 px-6 py-4 space-y-4 text-center rounded-b-2xl transition-all duration-300 font-mono"
+        class="lg:hidden dark:bg-gray-800 bg-slate-300 border-white/10 border-px-6 py-4 space-y-4 text-center rounded-b-2xl transition-all duration-300 font-mono"
       >
         <a
           href="#about"
           @click="isMenuOpen = false"
-          class="block text-white hover:text-gray-500 font-semibold"
+          class="block dark:text-white hover:text-gray-500 font-semibold"
           >About</a
         >
         <a
           href="#projects"
           @click="isMenuOpen = false"
-          class="block text-white hover:text-gray-500 font-semibold"
+          class="block dark:text-white hover:text-gray-500 font-semibold"
           >Projects</a
         >
         <a
           href="#skills"
           @click="isMenuOpen = false"
-          class="block text-white hover:text-gray-500 font-semibold"
+          class="block dark:text-white hover:text-gray-500 font-semibold"
           >Skills</a
         >
         <a
           href="#contact"
           @click="isMenuOpen = false"
-          class="block text-white hover:text-gray-500 font-semibold"
+          class="block dark:text-white hover:text-gray-500 font-semibold"
           >Contact</a
         >
         <a
           href="/portfolio/Resume.pdf"
           download="Loc_Dinh_Resume.pdf"
           @click="isMenuOpen = false"
-          class="mt-2 inline-block bg-white/20 hover:bg-stone-600 hover:scale-102 text-white font-semibold px-4 py-2 rounded-lg transition-transform"
+          class="mt-2 inline-block bg-emerald-400 dark:bg-white/20 hover:bg-emerald-700 dark:hover:bg-stone-600 hover:scale-102 text-white font-semibold px-4 py-2 rounded-lg transition-transform"
         >
           Download Resume
         </a>
@@ -298,7 +381,7 @@ const isMenuOpen = ref(false)
     </header>
 
     <!-- About -->
-    <section id="about" class="w-full px-[12%] py-30 scroll-mt-32 text-white">
+    <section id="about" class="w-full px-[12%] py-30 scroll-mt-32 dark:text-white">
       <!-- intro -->
       <h4 class="font-serif text-center mb-2 text-lg font-semibold">Portfolio</h4>
 
@@ -313,7 +396,7 @@ const isMenuOpen = ref(false)
         </div>
 
         <!-- bio -->
-        <div class="font-mono flex-1 space-y-5 leading-relaxed text-gray-200">
+        <div class="font-mono flex-1 space-y-5 leading-relaxed">
           <p>
             I am a New Grad Developer with a passion for Cloud Architecture, Machine Learning and
             Software Engineering. I am currently looking for new opportunities to apply my skills
@@ -323,47 +406,47 @@ const isMenuOpen = ref(false)
           <!-- main tools -->
           <ul class="font-mono font-semibold flex flex-wrap gap-3 pt-4">
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="outline-1 outline-solid outline-stone-700 dark:outline-none hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               Python
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="outline-1 outline-solid outline-stone-700 dark:outline-none hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               C++
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="outline-1 outline-solid outline-stone-700 dark:outline-none hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               Java
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="outline-1 outline-solid outline-stone-700 dark:outline-none hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               Spring Boot
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="outline-1 outline-solid outline-stone-700 dark:outline-none hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               Vue
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="outline-1 outline-solid outline-stone-700 dark:outline-none hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               TypeScript
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="outline-1 outline-solid outline-stone-700 dark:outline-none hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               AWS
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="outline-1 outline-solid outline-stone-700 dark:outline-none hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               Linux
             </li>
             <li
-              class="hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
+              class="outline-1 outline-solid outline-stone-700 dark:outline-none hover:bg-gray-500 hover:scale-110 shadow-sm transition-transform rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm"
             >
               Unity
             </li>
@@ -373,7 +456,7 @@ const isMenuOpen = ref(false)
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="px-[10%] py-30 bg-gray-900 text-white">
+    <section id="projects" class="px-[10%] py-30 dark:bg-gray-900 dark:text-white">
       <h2 class="font-serif text-center text-5xl font-bold mb-16">Projects</h2>
 
       <!-- 3-column grid -->
@@ -381,20 +464,20 @@ const isMenuOpen = ref(false)
         <div
           v-for="project in projects"
           :key="project.title"
-          class="bg-gray-800/60 border border-white/10 rounded-2xl p-6 flex flex-col shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+          class="dark:bg-gray-800/60 bg-slate-300 border border-white/10 rounded-2xl p-6 flex flex-col shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
         >
           <!-- Title -->
           <h3 class="text-2xl font-bold mb-3">{{ project.title }}</h3>
 
           <!-- Description -->
-          <p class="text-gray-300 text-sm leading-relaxed mb-5">{{ project.description }}</p>
+          <p class="dark:text-gray-300 text-sm leading-relaxed mb-5">{{ project.description }}</p>
 
           <!-- Tools / Tech badges -->
           <div class="flex flex-wrap gap-2 mb-6">
             <span
               v-for="tool in project.tools"
               :key="tool"
-              class="px-3 py-1 rounded-full bg-white/10 text-xs font-medium text-gray-200 hover:bg-white/20 transition"
+              class="px-3 py-1 rounded-full bg-white hover:bg-gray-500 hover:scale-105 dark:bg-white/10 text-xs font-medium dark:text-gray-200 transition"
             >
               {{ tool }}
             </span>
@@ -414,21 +497,21 @@ const isMenuOpen = ref(false)
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="min-h-screen bg-gray-900 px-[10%] py-30 text-white">
+    <section id="skills" class="min-h-screen dark:bg-gray-900 px-[10%] py-30 dark:text-white">
       <h2 class="font-serif text-5xl font-bold text-center mb-16">Skills</h2>
 
       <!-- 3-column -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         <!-- Languages -->
         <div
-          class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300"
+          class="group dark:bg-gray-800/60 bg-slate-300 dark:text-white rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300"
         >
           <h3 class="font-mono text-2xl font-bold mb-6 text-center">Languages</h3>
           <div class="grid grid-cols-2 gap-4">
             <div
               v-for="lang in languages"
               :key="lang.name"
-              class="flex flex-col items-center text-center bg-white/5 p-4 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+              class="flex flex-col items-center text-center bg-white/5 outline-1 dark:outline-none outline-solid outline-stone-700 p-4 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
             >
               <img
                 :src="lang.icon"
@@ -442,14 +525,14 @@ const isMenuOpen = ref(false)
 
         <!-- Frameworks -->
         <div
-          class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300"
+          class="group dark:bg-gray-800/60 bg-slate-300 dark:text-white rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300"
         >
           <h3 class="font-mono text-2xl font-bold mb-6 text-center">Frameworks & Libraries</h3>
           <div class="grid grid-cols-2 gap-4">
             <div
               v-for="fw in frameworks"
               :key="fw.name"
-              class="flex flex-col items-center text-center bg-white/5 p-4 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+              class="flex flex-col items-center text-center bg-white/5 outline-1 dark:outline-none outline-solid outline-stone-700 p-4 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
             >
               <img
                 :src="fw.icon"
@@ -463,14 +546,14 @@ const isMenuOpen = ref(false)
 
         <!-- Tools -->
         <div
-          class="group bg-gray-800/60 rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300"
+          class="group dark:bg-gray-800/60 bg-slate-300 dark:text-white rounded-2xl p-8 shadow-lg border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300"
         >
           <h3 class="font-mono text-2xl font-bold mb-6 text-center">Tools & Platforms</h3>
           <div class="grid grid-cols-2 gap-4">
             <div
               v-for="tool in tools"
               :key="tool.name"
-              class="flex flex-col items-center text-center bg-white/5 p-4 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+              class="flex flex-col items-center text-center bg-white/5 p-4 outline-1 dark:outline-none outline-solid outline-stone-700 rounded-xl hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
             >
               <img
                 :src="tool.icon"
@@ -485,13 +568,13 @@ const isMenuOpen = ref(false)
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="min-h-screen bg-gray-900 text-white px-[10%] py-30">
+    <section id="contact" class="min-h-screen dark:bg-gray-900 dark:text-white px-[10%] py-30">
       <h2 class="font-serif text-5xl font-bold text-center mb-12">Contact Me</h2>
 
       <form
         ref="form"
         @submit.prevent="sendEmail"
-        class="max-w-lg mx-auto bg-gray-800/60 p-8 rounded-2xl shadow-lg border border-white/10"
+        class="max-w-lg mx-auto dark:bg-gray-800/60 bg-slate-300 p-8 rounded-2xl shadow-lg border border-white/10"
       >
         <!-- Honeypot -->
         <input type="text" name="honeypot" style="display: none" tabindex="-1" autocomplete="off" />
@@ -501,7 +584,7 @@ const isMenuOpen = ref(false)
           type="text"
           name="user_name"
           required
-          class="w-full mb-4 p-2 rounded-lg bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full mb-4 p-2 rounded-lg bg-white/10 text-white focus:outline-none outline-2 outline-solid outline-stone-700 focus:ring-2 focus:ring-indigo-500"
         />
 
         <label class="font-mono block mb-2 font-semibold">Email</label>
@@ -509,7 +592,7 @@ const isMenuOpen = ref(false)
           type="email"
           name="user_email"
           required
-          class="w-full mb-4 p-2 rounded-lg bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full mb-4 p-2 rounded-lg bg-white/10 text-white focus:outline-none outline-2 outline-solid outline-stone-700 focus:ring-2 focus:ring-indigo-500"
         />
 
         <label class="font-mono block mb-2 font-semibold">Message</label>
@@ -517,12 +600,12 @@ const isMenuOpen = ref(false)
           name="message"
           rows="5"
           required
-          class="w-full mb-4 p-2 rounded-lg bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full mb-4 p-2 rounded-lg bg-white/10 text-white focus:outline-none focus:ring-2 outline-2 outline-solid outline-stone-700 focus:ring-indigo-500"
         ></textarea>
 
         <button
           type="submit"
-          class="font-mono hover:scale-101 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition-transform duration-200 shadow-lg"
+          class="font-mono hover:scale-101 w-full bg-emerald-400 hover:bg-emerald-700 dark:text-white font-semibold py-2 rounded-lg transition-transform duration-200 shadow-lg"
         >
           Send Message
         </button>
@@ -537,7 +620,7 @@ const isMenuOpen = ref(false)
           href="https://www.linkedin.com/in/loc-dinh-/"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex flex-col items-center justify-center bg-gray-800/60 rounded-2xl p-6 border border-white/10 shadow-lg hover:shadow-[0_10px_25px_rgba(0,0,0,0.7)] hover:-translate-y-2 transition-all duration-300"
+          class="flex flex-col items-center justify-center bg-slate-300 dark:bg-gray-800/60 rounded-2xl p-6 border border-white/10 shadow-lg hover:shadow-[0_10px_25px_rgba(0,0,0,0.7)] hover:-translate-y-2 transition-all duration-300"
         >
           <img
             :src="linkedin"
@@ -552,7 +635,7 @@ const isMenuOpen = ref(false)
           href="https://github.com/LocBDinh"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex flex-col items-center justify-center bg-gray-800/60 rounded-2xl p-6 border border-white/10 shadow-lg hover:shadow-[0_10px_25px_rgba(0,0,0,0.7)] hover:-translate-y-2 transition-all duration-300"
+          class="flex flex-col items-center justify-center bg-slate-300 dark:bg-gray-800/60 rounded-2xl p-6 border border-white/10 shadow-lg hover:shadow-[0_10px_25px_rgba(0,0,0,0.7)] hover:-translate-y-2 transition-all duration-300"
         >
           <img
             :src="github"
@@ -565,9 +648,9 @@ const isMenuOpen = ref(false)
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 border-t border-white/10 py-6">
+    <footer class="dark:bg-gray-800 bg-slate-200 border-t border-white/10 py-6">
       <div
-        class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-gray-400 text-sm"
+        class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between dark:text-gray-400 text-sm"
       >
         <!-- Copyright -->
         <p class="text-center md:text-left">
@@ -575,7 +658,7 @@ const isMenuOpen = ref(false)
         </p>
 
         <!-- Quick Links + Socials -->
-        <div class="flex flex-col md:flex-row items-center gap-6 mt-4 md:mt-0 text-white">
+        <div class="flex flex-col md:flex-row items-center gap-6 mt-4 md:mt-0 dark:text-white">
           <!-- Quick Links -->
           <div class="flex gap-6">
             <a href="#about" class="hover:text-indigo-400 transition">About</a>
