@@ -286,11 +286,52 @@ onMounted(() => {
           </button>
         </div>
 
-        <!-- Mobile Navbar Open -->
-        <div class="lg:hidden flex items-center">
+        <!-- Mobile Navbar Controls -->
+        <div class="lg:hidden flex items-center gap-3">
+          <!-- Theme Toggle -->
+          <button
+            @click="toggleTheme"
+            class="p-2 rounded-lg outline-1 outline-solid outline-stone-700 dark:bg-white/10 hover:bg-gray-400 dark:hover:bg-white/20 transition flex items-center justify-center hover:scale-105"
+            aria-label="Toggle Dark/Light Mode"
+          >
+            <!-- Sun Icon -->
+            <svg
+              v-if="isDark"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-yellow-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M12 3v1m0 16v1m8.66-8.66h1M3.34 12H2m15.36 6.36l.7.7M6.34 6.34l-.7-.7m0 12.72l.7-.7m12.72-12.72l-.7.7M12 5a7 7 0 000 14a7 7 0 000-14z"
+              />
+            </svg>
+            <!-- Moon Icon -->
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-indigo-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M21 12.79A9 9 0 1111.21 3A7 7 0 0021 12.79z"
+              />
+            </svg>
+          </button>
+
+          <!-- Mobile Dropdown Open/Close -->
           <button
             @click="isMenuOpen = !isMenuOpen"
-            class="h-8 w-auto drop-shadow-[0_0_2px_rgba(0,0,0,0.5)] dark:drop-shadow-none"
+            class="text-gray-900 dark:text-white focus:outline-none transition-transform duration-200 hover:scale-110"
             aria-label="Toggle Menu"
           >
             <svg
@@ -674,7 +715,7 @@ onMounted(() => {
               href="https://www.linkedin.com/in/loc-dinh-/"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center justify-center w-9 h-9 bg-gray-700/50 rounded-xl border border-white/10 hover:-translate-y-1 hover:shadow-[0_0_10px_rgba(99,102,241,0.6)] transition-all duration-300"
+              class="flex items-center justify-center w-9 h-9 outline-1 outline-solid ouline-stone-700 dark:outline-none dark:bg-gray-700/50 rounded-xl border border-white/10 hover:-translate-y-1 hover:shadow-[0_0_10px_rgba(99,102,241,0.6)] transition-all duration-300"
             >
               <img :src="linkedin" alt="LinkedIn" class="w-5 h-5" />
             </a>
@@ -684,7 +725,7 @@ onMounted(() => {
               href="https://github.com/locbdinh"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center justify-center w-9 h-9 bg-gray-700/50 rounded-xl border border-white/10 hover:-translate-y-1 hover:shadow-[0_0_10px_rgba(99,102,241,0.6)] transition-all duration-300"
+              class="flex items-center justify-center w-9 h-9 outline-1 outline-solid ouline-stone-700 dark:outline-none dark:bg-gray-700/50 rounded-xl border border-white/10 hover:-translate-y-1 hover:shadow-[0_0_10px_rgba(99,102,241,0.6)] transition-all duration-300"
             >
               <img :src="github" alt="GitHub" class="w-5 h-5" />
             </a>
