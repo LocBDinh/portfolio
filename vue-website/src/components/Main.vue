@@ -250,7 +250,7 @@ onMounted(() => {
         <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:ml-4">
           <button
             @click="toggleTheme"
-            class="p-2 rounded-lg bg-slate-300 dark:bg-white/10 hover:bg-gray-400 dark:hover:bg-white/20 transition flex items-center justify-center hover:scale-105"
+            class="cursor-pointer p-2 rounded-lg bg-slate-300 dark:bg-white/10 hover:bg-gray-400 dark:hover:bg-white/20 transition flex items-center justify-center hover:scale-105"
             aria-label="Toggle Dark/Light Mode"
           >
             <svg
@@ -646,7 +646,7 @@ onMounted(() => {
 
         <button
           type="submit"
-          class="font-mono hover:scale-101 w-full bg-emerald-400 hover:bg-emerald-700 dark:text-white font-semibold py-2 rounded-lg transition-transform duration-200 shadow-lg"
+          class="cursor-pointer font-mono hover:scale-101 w-full bg-emerald-400 hover:bg-emerald-700 dark:text-white font-semibold py-2 rounded-lg transition-transform duration-200 shadow-lg"
         >
           Send Message
         </button>
