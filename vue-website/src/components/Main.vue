@@ -237,7 +237,7 @@ onMounted(() => {
           class="hover:lg hover:scale-102 transition-transform hidden lg:flex lg:flex-1 lg:justify-end"
         >
           <a
-            href="/portfolio/Resume.pdf"
+            href="/Resume.pdf"
             download="Loc_Dinh_Resume.pdf"
             class="inline-flex items-center rounded-xl bg-slate-500 dark:bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-stone-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             hov
