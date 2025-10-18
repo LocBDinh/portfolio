@@ -14,11 +14,12 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "node ./scripts/deploy.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.1.13",
+    "dotenv": "^17.2.3",
     "emailjs-com": "^3.2.0",
     "tailwindcss": "^4.1.13",
     "vue": "^3.5.18"
