@@ -232,6 +232,33 @@ onMounted(() => {
           >
         </div>
 
+        <!-- Social Links (Compact Icons) -->
+        <div class="hidden lg:flex items-center gap-3 ml-6">
+          <a
+            href="https://www.linkedin.com/in/loc-dinh-/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center w-9 h-9 rounded-lg bg-slate-300 dark:bg-white/10 border border-white/10
+            hover:scale-110 hover:shadow-md hover:bg-slate-500 dark:hover:bg-stone-600 transition-all duration-200"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+          >
+            <img :src="linkedin" alt="LinkedIn" class="w-5 h-5" />
+          </a>
+
+          <a
+            href="https://github.com/locbdinh"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center w-9 h-9 rounded-lg bg-slate-300 dark:bg-white/10 border border-white/10 
+            hover:scale-110 hover:shadow-md hover:bg-slate-500 dark:hover:bg-stone-600 transition-all duration-200"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <img :src="github" alt="GitHub" class="w-5 h-5" />
+          </a>
+        </div>
+
         <!-- Resume Button -->
         <div
           class="hover:lg hover:scale-102 transition-transform hidden lg:flex lg:flex-1 lg:justify-end"
@@ -708,7 +735,7 @@ onMounted(() => {
             <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
           </div>
 
-          <!-- Social Links (mini-cards) -->
+          <!-- Social Links -->
           <div class="flex gap-4 mt-3 md:mt-0">
             <!-- LinkedIn -->
             <a
