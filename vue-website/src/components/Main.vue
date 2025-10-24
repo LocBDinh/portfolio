@@ -652,7 +652,7 @@ onMounted(() => {
           type="text"
           name="user_name"
           required
-          class="w-full mb-4 p-2 rounded-lg bg-white/10 text-white focus:outline-none outline-2 outline-solid outline-stone-700 focus:ring-2 focus:ring-indigo-500"
+          class="w-full mb-4 p-2 rounded-lg bg-white/10 dark:text-white text-black focus:outline-none outline-2 outline-solid outline-stone-700 focus:ring-2 focus:ring-indigo-500"
         />
 
         <label class="font-mono block mb-2 font-semibold">Email</label>
@@ -660,7 +660,7 @@ onMounted(() => {
           type="email"
           name="user_email"
           required
-          class="w-full mb-4 p-2 rounded-lg bg-white/10 text-white focus:outline-none outline-2 outline-solid outline-stone-700 focus:ring-2 focus:ring-indigo-500"
+          class="w-full mb-4 p-2 rounded-lg bg-white/10 dark:text-white text-black focus:outline-none outline-2 outline-solid outline-stone-700 focus:ring-2 focus:ring-indigo-500"
         />
 
         <label class="font-mono block mb-2 font-semibold">Message</label>
@@ -668,7 +668,7 @@ onMounted(() => {
           name="message"
           rows="5"
           required
-          class="w-full mb-4 p-2 rounded-lg bg-white/10 text-white focus:outline-none focus:ring-2 outline-2 outline-solid outline-stone-700 focus:ring-indigo-500"
+          class="w-full mb-4 p-2 rounded-lg bg-white/10 dark:text-white text-black focus:outline-none focus:ring-2 outline-2 outline-solid outline-stone-700 focus:ring-indigo-500"
         ></textarea>
 
         <button
