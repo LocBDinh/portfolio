@@ -14,22 +14,22 @@ const bucket = process.env.AWS_S3_BUCKET;
 const distId = process.env.CLOUDFRONT_ID;
 
 if (!bucket || !distId) {
-  console.error("❌ Missing environment variables, check the .env file.");
+  console.error("Missing environment variables, check the .env file.");
   process.exit(1);
 }
 
 try {
-  console.log("🚀 Building project...");
+  console.log("Building project...");
   execSync("npm run build", { stdio: "inherit" });
 
-  console.log(`📦 Uploading to S3 bucket: ${bucket}`);
+  console.log(`Uploading to S3 bucket: ${bucket}`);
   execSync(`aws s3 sync dist/ s3://${bucket} --delete`, { stdio: "inherit" });
 
-  console.log(`🌍 Invalidating CloudFront distribution: ${distId}`);
+  console.log(`Invalidating CloudFront distribution: ${distId}`);
   execSync(`aws cloudfront create-invalidation --distribution-id ${distId} --paths "/*"`, { stdio: "inherit" });
 
-  console.log("✅ Deployment complete!");
+  console.log("Complete!");
 } catch (error) {
-  console.error("❌ Deployment failed:", error.message);
+  console.error("Deployment failed:", error.message);
   process.exit(1);
 }
