@@ -5,7 +5,6 @@ import home from '../assets/home.svg'
 import pfp from '../assets/locdinh.jpg'
 import linkedin from '../assets/linkedin.svg'
 import github from '../assets/github.svg'
-import placeholder from '../assets/placeholderpfp.png'
 import python from '../assets/python.svg'
 import cpp from '../assets/cpp.svg'
 import java from '../assets/java.svg'
@@ -134,7 +133,6 @@ const sendEmail = async () => {
 
   const formData = new FormData(form.value)
 
-  // Anti-Bot Honeypot Check
   if (formData.get('honeypot')) {
     console.warn('Bot detected — form not submitted.')
     return
